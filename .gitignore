@@ -1,0 +1,4 @@
+node_modules/*
+audio/*
+auth.json
+package-lock.json

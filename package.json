@@ -1,0 +1,14 @@
+{
+  "name": "Huginn-and-Muninn",
+  "version": "1.0.0",
+  "description": "A Discord bot to manage this Norse realm",
+  "main": "bot.js",
+  "author": "Ryan Druffel",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "ffmpeg": "0.0.4",
+    "fpcalc": "^1.2.1",
+    "google-tts-api": "0.0.2",
+    "opusscript": "0.0.6"
+  }
+}
