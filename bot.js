@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const auth = require('./auth.json');
 const audio = require('./audio.js');
 const googleTTS = require('google-tts-api');
+const request = require('request');
 //const tts = require('');
 const bot = new Discord.Client();
 var me = null;
@@ -108,7 +109,24 @@ bot.on('voiceStateUpdate', (userOld,user) => {
 	}
 });
 
+request.get('https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/RiotSchmick?api_key='+auth.RIOT, 
+function (err, res, body) {
+	//console.log(body);
+});
 
+request.get('https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/31649572?api_key='+auth.RIOT, 
+function (err, res, body) {
+	console.log(JSON.parse(body).matches[0].gameId);
+	request.get('https://na1.api.riotgames.com/lol/match/v3/matches/'+JSON.parse(body).matches[0].gameId+'?api_key='+auth.RIOT, 
+	function (err2, res2, body2) {
+		console.log(JSON.parse(body2));
+	});
+});
+
+/*request.get('https://na1.api.riotgames.com/lol/static-data/v3/champions?api_key='+auth.RIOT, 
+function (err, res, body) {
+	console.log(JSON.parse(body).data.Jax);
+});*/
 
 bot.login(auth.token);
 
